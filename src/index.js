@@ -13,6 +13,7 @@ const app = express();
 app.use(cors({
   origin: "*",
 }));
+const port = process.env.PORT || 3000
 app.use(bodyParser.json())
 app.use(authRoutes);
 app.use(trackRoutes)
@@ -36,7 +37,7 @@ app.get("/", requireAuth, (req, res) => {
   res.send(`Your email : ${req.user.email}`);
 });
 
-app.listen(3000, () => {
-  console.log("listening on port 3000")
+app.listen(port, () => {
+  console.log("listening on port " + port)
 })
 
